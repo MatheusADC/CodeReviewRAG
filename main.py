@@ -9,3 +9,18 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 import os
 from git import Repo
+
+repo_path = "./test_repo"
+
+repo = Repo.clone_from("https://github.com/langchain-ai/langchain", to_path=repo_path)
+
+loader = GenericLoader.from_filesystem(
+    repo_path + "/libs/core/langchain_core/",
+    glob="**/*",
+    suffixes = [".py"],
+    exclude = ["**/non-utf-8-encoding.py"],
+    parser = LanguageParser(language=Language.PYTHON, parser_threshold=500),
+)
+
+documents = loader.load()
+len(documents)
