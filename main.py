@@ -33,3 +33,7 @@ python_splitter = RecursiveCharacterTextSplitter(
 
 texts = python_splitter.split_documents(documents)
 len(texts)
+
+os.environ["OPENAI_API_KEY"] = "sua_chave_api"
+
+db = Chroma.from_documents(texts, OpenAIEmbeddings(disallowed_special=()))
