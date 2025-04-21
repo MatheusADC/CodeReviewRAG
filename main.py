@@ -37,3 +37,8 @@ len(texts)
 os.environ["OPENAI_API_KEY"] = "sua_chave_api"
 
 db = Chroma.from_documents(texts, OpenAIEmbeddings(disallowed_special=()))
+
+retriever = db.as_retriever(
+    search_type="mmr",
+    search_kwargs={"k": 8},
+)
