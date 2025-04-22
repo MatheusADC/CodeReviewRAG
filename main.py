@@ -9,7 +9,6 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 import os
 from git import Repo
-https://github.com/MatheusADC/CodeReviewRAG/blob/main/main.py
 repo_path = "./test_repo"
 
 repo = Repo.clone_from("https://github.com/langchain-ai/langchain", to_path=repo_path)
