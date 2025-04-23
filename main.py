@@ -56,3 +56,7 @@ prompt = ChatPromptTemplate.from_messages(
 document_chain = create_stuff_documents_chain(llm, prompt)
 
 retrieval_chain = create_retrieval_chain(retriever, document_chain)
+
+response = retrieval_chain.invoke({"input": "Você pode revisar e sugerir melhorias para o código de RunnableBinding"})
+
+print(response['answer'])
