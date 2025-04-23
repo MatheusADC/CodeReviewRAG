@@ -42,7 +42,7 @@ retriever = db.as_retriever(
     search_kwargs={"k": 8},
 )
 
-llm = ChatOpenAI(model="gpt-3.5-turbo", max_tokens=200)
+llm = ChatOpenAI(model="gpt-3.5-turbo", max_tokens=1000)
 prompt = ChatPromptTemplate.from_messages(
     [
         {
