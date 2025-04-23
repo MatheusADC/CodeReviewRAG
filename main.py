@@ -41,3 +41,18 @@ retriever = db.as_retriever(
     search_type="mmr",
     search_kwargs={"k": 8},
 )
+
+llm = ChatOpenAI(model="gpt-3.5-turbo", max_tokens=200)
+prompt = ChatPromptTemplate.from_messages(
+    [
+        {
+            "system", 
+            "Você é um revisor de código experiente. Forneça informações detalhadas sobre a revisão do código e sugestões de melhorias baseado no contexto fornecido abaixo: \n\n {context}"
+        },
+        {"user", "{input}"}
+    ]
+)
+
+document_chain = create_stuff_documents_chain(llm, prompt)
+
+retrieval_chain = create_retrieval_chain(retriever, document_chain)
